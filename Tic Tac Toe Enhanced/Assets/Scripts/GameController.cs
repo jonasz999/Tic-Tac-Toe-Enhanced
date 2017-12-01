@@ -14,20 +14,22 @@ public class GameController : MonoBehaviour
 	void Start()
 	{
 		bottomText.text = "";
-		int random = Random.Range(0, 2);
-		if (random == 0)
-		{
-			playerTurn = false;
-		}
-		else
-		{
-			playerTurn = true;
-		}
+		RandomizePlayerTurn();
 	}
+
 	public void restart()
 	{
-		SceneManager.LoadScene("Main");
+		for (int i = 0; i < 9; i++)
+		{
+			tiles[i].Player = 'E';
+			tiles[i].O.SetActive(false);
+			tiles[i].X.SetActive(false);
+		}
+		bottomText.text = "";
+		RandomizePlayerTurn();
+		gameover = false;
 	}
+
 	public void changeTheme()
 	{
 		if (theme == 1)
@@ -43,6 +45,7 @@ public class GameController : MonoBehaviour
 			theme = 1;
 		}
 	}
+
 	public void changePlayerTurn()
 	{
 		if (playerTurn == false)
@@ -54,10 +57,12 @@ public class GameController : MonoBehaviour
 			playerTurn = false;
 		}
 	}
+
 	public bool getPlayerTurn()
 	{
 		return playerTurn;
 	}
+
 	public void checkForGameover()
 	{
 		if (
@@ -99,6 +104,19 @@ public class GameController : MonoBehaviour
 		{
 			gameover = true;
 			bottomText.text = "It's a draw!";
+		}
+	}
+
+	private void RandomizePlayerTurn()
+	{
+		int random = Random.Range(0, 2);
+		if (random == 0)
+		{
+			playerTurn = false;
+		}
+		else
+		{
+			playerTurn = true;
 		}
 	}
 }
