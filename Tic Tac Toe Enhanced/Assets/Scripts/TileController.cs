@@ -8,9 +8,12 @@ public class TileController : MonoBehaviour
 	public GameObject X;
 	public Sprite emptyLight;
 	public Sprite emptyDark;
+	public ParticleSystem particleO;
+	public ParticleSystem particleX;
 	private GameController gameController;
 	[NonSerializedAttribute]
 	public char Player = 'E';
+
 	void Start()
 	{
 		GameObject gameControllerObject = GameObject.FindWithTag("GameController");
@@ -23,6 +26,7 @@ public class TileController : MonoBehaviour
 			Debug.Log("Could not find 'GameController' script!");
 		}
 	}
+
 	void OnMouseDown()
 	{
 		if (gameController.gameover == false)
@@ -30,12 +34,16 @@ public class TileController : MonoBehaviour
 			setPlayer(gameController.getPlayerTurn());
 		}
 	}
+
 	void setPlayer(bool playerTurn)
 	{
 		if (playerTurn == false && Player == 'E')
 		{
 			O.SetActive(true);
 			X.SetActive(false);
+			ParticleSystem psO = (ParticleSystem)Instantiate(particleO);
+			psO.transform.position = O.transform.position;
+			psO.Play();
 			Player = 'O';
 			gameController.changePlayerTurn();
 		}
@@ -44,10 +52,16 @@ public class TileController : MonoBehaviour
 			O.SetActive(false);
 			X.SetActive(true);
 			Player = 'X';
+			/*particleX.transform.position = O.transform.position;
+			particleX.Play();*/
+			ParticleSystem psX = (ParticleSystem)Instantiate(particleX);
+			psX.transform.position = X.transform.position;
+			psX.Play();
 			gameController.changePlayerTurn();
 		}
 		gameController.checkForGameover();
 	}
+
 	void Update()
 	{
 		if (gameController.theme == 1)

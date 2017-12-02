@@ -17,7 +17,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - GameBoard
   - 
   - 
   - 
@@ -50,4 +50,7 @@ TagManager:
     locked: 0
   - name: O_X
     uniqueID: 3142137205
+    locked: 0
+  - name: Particles
+    uniqueID: 1826401691
     locked: 0

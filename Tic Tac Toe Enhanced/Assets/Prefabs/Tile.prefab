@@ -144,6 +144,10 @@ MonoBehaviour:
   X: {fileID: 1000012805046774}
   emptyLight: {fileID: 21300000, guid: 306645513bde7884b8cfe78a73c2fa23, type: 3}
   emptyDark: {fileID: 21300000, guid: a668b40120bcd9d42aad5919838cab0b, type: 3}
+  particleO: {fileID: 198992866288573286, guid: 9bd0260e340ecdd41a760c166563c8e1,
+    type: 2}
+  particleX: {fileID: 198988993352515902, guid: e9622ab4fb0a38d4ba515b6008550599,
+    type: 2}
 --- !u!114 &114000012264099494
 MonoBehaviour:
   m_ObjectHideFlags: 1
